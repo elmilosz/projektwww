@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-  <meta charset="UTF-8">
-  <title>Strona głowna</title>
-</head>
-<body>
-  <h1>Strona główna</h1>
-</body>
-</html>
+
+{% if user.is_authenticated %}
+    <h1>Cześć, {{ user }}</h1>
+{% else %}
+    <p>Nie jesteś zalogowany</p>
+{% endif %}
+
+<button><a href="{% url 'polls:question_list'%}">Pytania</a></button>
+<button><a href="{% url 'admin:index'%}">Admin</a></button>

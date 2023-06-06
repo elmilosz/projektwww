@@ -19,10 +19,12 @@ class ChoiceAdmin(admin.ModelAdmin):
         return obj.question.question_text
 
 class AnswerAdmin(admin.ModelAdmin):
-    search_fields = ['question','answer_text']
-
+    list_display = ['answer_text', 'get_question']
+    search_fields = ['question', 'answer_text']
     def get_question(self,obj):
         return obj.question.question_text
+    def answer_text(self,obj):
+        return obj.answer.answer_text
 
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Choice,ChoiceAdmin)

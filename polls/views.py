@@ -3,7 +3,7 @@ from .models import Question
 
 
 def question_list(request):
-   questions = Question.objects.all()
+   questions = Question.objects.order_by('-pub_date','-question_text')
    return render(request, 'polls/question_list.html', {'questions': questions})
 def question_detail(request, question_id):
    question = get_object_or_404(Question, pk=question_id)
